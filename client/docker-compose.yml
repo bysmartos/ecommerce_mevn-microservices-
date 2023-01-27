@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  
+  
+  web:
+    build: .
+    command: bash -c " npm run serve"
+    environment:
+      PORT: 8080
+    volumes:
+      - .:/client/
+    ports:
+      - "8080:8080"
+ # Port required for debugging with node
+      - "9876:9876"
+   
+volumes:
+  db: {}
+ 
