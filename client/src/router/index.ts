@@ -26,11 +26,11 @@ const routes: RouteRecordRaw[] = [
     //   name: "product-new",
     //   component: () => import("../components/ProductForm.vue"),
     // },
-    // {
-    //   path: "/product/:id",
-    //   name: "product-details",
-    //   component: () => import("../components/ProductDetail.vue"),
-    // },
+    {
+      path: "/product/:id",
+      name: "product-details",
+      component: () => import("../components/ProductDetail.vue"),
+    },
   ];
   
 //   console.log(process.env.BASE_URL);

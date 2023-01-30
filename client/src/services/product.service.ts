@@ -2,11 +2,13 @@ import iProduct from "@/interfaces/product.interface";
 import { AxiosResponse } from "axios";
 import axios from "./axios.service";
 
-export const getProducts = async (): Promise<AxiosResponse<any>> =>
-  await axios(8004).get("/products");
 
-// export const getTask = async (id: string): Promise<AxiosResponse<Task>> =>
-//   await axios.get(`/tasks/${id}`);
+const port= 8004
+export const getProducts = async (): Promise<AxiosResponse<any>> =>
+  await axios(port).get("/products");
+
+export const getProduct = async (id: any): Promise<AxiosResponse<any>> =>
+  await axios(port).get(`/product/${id}`);
 
 // export const createTask = async (task: Task): Promise<AxiosResponse> =>
 //   await axios.post("/tasks", task);
