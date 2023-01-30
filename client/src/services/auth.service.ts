@@ -11,8 +11,8 @@ export const login = async (form: any): Promise<AxiosResponse<object>> =>
   export const register = async (form: any): Promise<AxiosResponse<object>> =>
   await axios(port).post("/register", form);
 
-// export const getTask = async (id: string): Promise<AxiosResponse<Task>> =>
-//   await axios.get(`/tasks/${id}`);
+  export const logout = async () =>
+  await axios(port).post("/logout");
 
 // export const createTask = async (task: Task): Promise<AxiosResponse> =>
 //   await axios.post("/tasks", task);

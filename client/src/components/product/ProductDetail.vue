@@ -12,9 +12,9 @@
   </template>
  
   <script lang="ts">
-  import IProduct from "../interfaces/product.interface";
+  import IProduct from "../..//interfaces/product.interface";
 import { defineComponent } from "vue";
-  import { getProduct } from "../services/product.service";
+  import { getProduct } from "../../services/product.service";
   
   export default defineComponent({
     name: "product-details",

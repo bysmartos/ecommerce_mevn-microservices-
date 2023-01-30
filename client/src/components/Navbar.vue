@@ -10,25 +10,32 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/signin">SignIn</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/signup">SignUp</router-link>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">User</a>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/admin">Admin</router-link>
-        </li>
-        <li class="nav-item">
+        <template v-if="!store.state.user">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/signin">SignIn</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/signup">SignUp</router-link>
+            </li>
+          </template>
+          <li class="nav-item">
+              <router-link class="nav-link" to="/user">User</router-link>
+            </li>
+       
+        <template v-if="store.state.user">
+           
+            <template v-if="store.state.user.isAdmin">
+              <li class="nav-item">
+                <router-link class="nav-link" to="/admin">Admin</router-link>
+              </li>
+            </template>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click="logout">Logout</a>
+            </li>
+          </template>
+          <li class="nav-item">
           <a class="nav-link" href="#">Cart</a>
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/admin">Admin</router-link>
-        </li>
-       
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Search">
@@ -41,8 +48,21 @@
   
   <script lang="ts">
   import { defineComponent } from "vue";
+  import store from "../store";
   
   export default defineComponent({
     name: "Navbar-n",
+    computed: {
+    store(): typeof store {
+      return store;
+    }
+  },
+    methods: {
+    logout() {
+      store.dispatch('logout');
+      this.$router.push({ name: "products" });
+    },
+   
+  }
   });
   </script>

@@ -21,8 +21,8 @@
   </template>
   
   <script lang="ts">
-  import  IProduct  from "../interfaces/product.interface";
-  import { getProducts } from "../services/product.service";
+  import  IProduct  from "../../interfaces/product.interface";
+  import { getProducts } from "../../services/product.service";
   import { defineComponent } from "vue";
   
   export default defineComponent({

@@ -1,7 +1,7 @@
 import Vuex from 'vuex';
 import IUser from '@/interfaces/user.interface';
 import State from '@/interfaces/state.interface';
-import { login } from "../services/auth.service";
+import { logout } from "../services/auth.service";
 
 const userData = localStorage.getItem('user');
 
@@ -18,15 +18,21 @@ const store = new Vuex.Store({
     SET_ACCESS_TOKEN(state, accessToken) {
       state.accessToken = accessToken;
       localStorage.setItem('accessToken', accessToken)
-    }
+    },logout(state) {
+      state.user = null;
+      state.accessToken = null;
+    },
   },actions:  {
-    login({ commit }, payload: { user: any, accessToken: string }) {
+     login({ commit }, payload: { user: any, accessToken: string }) {
       commit('SET_USER', payload.user);
       commit('SET_ACCESS_TOKEN', payload.accessToken);
     },
-    logout({ commit }) {
-      commit('SET_USER', null);
-      commit('SET_ACCESS_TOKEN', null);
+    async logout({ commit }) {
+      const res :any = await logout();
+      console.log(res)
+      localStorage.removeItem('user');
+      localStorage.removeItem('accessToken');
+      commit('logout');
     },
   },
   
