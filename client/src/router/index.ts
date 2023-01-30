@@ -31,6 +31,11 @@ const routes: RouteRecordRaw[] = [
       name: "product-details",
       component: () => import("../components/ProductDetail.vue"),
     },
+    {
+      path: "/admin",
+      name: "admin-view",
+      component: () => import("../views/Admin.vue"),
+    },
   ];
   
 //   console.log(process.env.BASE_URL);

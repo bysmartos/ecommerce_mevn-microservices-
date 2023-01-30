@@ -1,0 +1,9 @@
+<template><h1>adminfgfg</h1></template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "Admin-view",
+});
+</script>

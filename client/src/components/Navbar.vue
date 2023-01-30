@@ -20,7 +20,7 @@
           <a class="nav-link" href="#">User</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Admin</a>
+          <router-link class="nav-link" to="/admin">Admin</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Cart</a>
