@@ -20,7 +20,7 @@
           <button
             class="btn btn-primary "
           >
-            save
+            Sign in
           </button>
         </form>
     </div>
@@ -28,7 +28,10 @@
   
   <script lang="ts">
     import { defineComponent } from "vue";
+    import store from '../store';
+    import IUserLogin from '../interfaces/login.interface'
   import { login } from "../services/auth.service";
+  import { mapActions } from 'vuex'
   export default defineComponent({
     data() {
       return {
@@ -41,8 +44,11 @@
     methods: {
       async submitForm() {
         try {
-          const res = await login(this.loginForm);
-          console.log(res);
+          const res :any = await login(this.loginForm);
+          console.log(res.data.user._doc);
+          const user= res.data.user._doc;
+    const accessToken = res.data.acces_token;
+    store.dispatch('login', { user, accessToken });
           this.$router.push({ name: "products" });
         } catch (error) {
           console.error(error);

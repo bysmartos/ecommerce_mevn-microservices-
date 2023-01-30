@@ -25,6 +25,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Cart</a>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/admin">Admin</router-link>
+        </li>
        
       </ul>
       <form class="d-flex">

@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import store from "@/store";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -34,6 +35,14 @@ const routes: RouteRecordRaw[] = [
     {
       path: "/admin",
       name: "admin-view",
+      beforeEnter: (to, from, next) => {
+        if (store.state.user.isAdmin) {
+          console.log(store.state.user.isAdmin)
+          next()
+        } else {
+          next('/')
+        }
+      },
       component: () => import("../views/Admin.vue"),
     },
   ];
