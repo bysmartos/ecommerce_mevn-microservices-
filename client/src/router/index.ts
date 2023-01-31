@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import store from "@/store";
 
+
+
 const routes: RouteRecordRaw[] = [
     {
       path: "/",
@@ -27,7 +29,7 @@ const routes: RouteRecordRaw[] = [
       name: "user-info",
       beforeEnter: (to, from, next) => {
         if (!store.state.user) {
-          next({ name: "home" });
+          next({ name: "products" });
           alert("Debes loguearte para acceder a esta página");
         } else {
           next();
@@ -53,6 +55,48 @@ const routes: RouteRecordRaw[] = [
         }
       },
       component: () => import("../views/Admin.vue"),
+    },
+    {
+      path: "/users",
+      name: "users-all",
+      beforeEnter: (to, from, next) => {
+        if (store.state.user && store.state.user.isAdmin ) {
+          console.log(store.state.user.isAdmin)
+          next()
+        } else {
+          alert("Debes ser admin acceder a esta página");
+          next('/')
+        }
+      },
+      component: () => import("../components/admin/UserAll.vue"),
+    },
+    {
+      path: "/product-new",
+      name: "product-new",
+      beforeEnter: (to, from, next) => {
+        if (store.state.user && store.state.user.isAdmin ) {
+          console.log(store.state.user.isAdmin)
+          next()
+        } else {
+          alert("Debes ser admin acceder a esta página");
+          next('/')
+        }
+      },
+      component: () => import("../components/admin/ProductForm.vue"),
+    },
+    {
+      path: "/carts",
+      name: "carts-all",
+      beforeEnter: (to, from, next) => {
+        if (store.state.user && store.state.user.isAdmin ) {
+          console.log(store.state.user.isAdmin)
+          next()
+        } else {
+          alert("Debes ser admin acceder a esta página");
+          next('/')
+        }
+      },
+      component: () => import("../components/admin/CartAll.vue"),
     },
   ];
   
