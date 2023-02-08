@@ -43,6 +43,16 @@ const routes: RouteRecordRaw[] = [
       component: () => import("../components/product/ProductDetail.vue"),
     },
     {
+      path: "/audio",
+      name: "audio-in",
+      component: () => import("../views/AudioAxios.vue"),
+    },
+    {
+      path: "/audio-h",
+      name: "audio-h",
+      component: () => import("../views/AudioHardcoded.vue"),
+    },
+    {
       path: "/admin",
       name: "admin-view",
       beforeEnter: (to, from, next) => {
