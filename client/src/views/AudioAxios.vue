@@ -22,7 +22,7 @@ export default defineComponent({
       try {
         const res = await example();
         console.log({ hola: res.data.urlAudio });
-        const audioUrl = 'https://ucb15314064c2a8adf478007f96a.dl.dropboxusercontent.com/cd/0/get/B2Kx6lc_wHLum9VX0v0TelbhIkwMszUXBlGARwnGE9Yfx61sjU4-rE_EkFCnHTHkKc42O-YeXiaHKvWMRFDVarT21mrAXe_Ev0ca5aM5-0ztCtvWuhRd40gBddabdcRYf1G7mmvtlTdXA2DXgoFh3fKU5H5V8h3Ha9bjivMff572rUAtXgaeDMj_o7Eje6AO5rs/file';
+        const audioUrl = res.data.urlAudio;
         console.log(audioUrl);
 
         
